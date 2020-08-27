@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import FlatListPicker from './components/FlatListPicker';
+import MovieCarousel from './components/MovieCarousel';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -10,17 +11,13 @@ function HomeScreen({ navigation }) {
   return (
     <View style={s.container}>
       <Button
-        title="Go to Details"
+        title="FlatList Picker"
         onPress={() => navigation.navigate('FlatListPicker')}
       />
-    </View>
-  );
-}
-
-function DetailsScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
+      <Button
+        title="Movie Carousel"
+        onPress={() => navigation.navigate('MovieCarousel')}
+      />
     </View>
   );
 }
@@ -49,6 +46,7 @@ export default function App() {
           options={{ title: 'My home' }}
         />
         <Stack.Screen name="FlatListPicker" component={FlatListPicker} header={'FlatListPicker'}/>
+        <Stack.Screen name="MovieCarousel" component={MovieCarousel} header={'MovieCarousel'}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

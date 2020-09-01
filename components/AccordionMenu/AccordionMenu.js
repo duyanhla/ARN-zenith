@@ -12,25 +12,35 @@ import {
   StyleSheet,
   Text,
   View,
-  Dimensions,
   StatusBar,
-  Image,
-  FlatList,
   TouchableOpacity,
 } from 'react-native';
-// import { Transition, Transitioning } from 'react-native-reanimated';
+import { Transition, Transitioning } from 'react-native-reanimated';
 import data from './data';
+
+const transition = (
+  <Transition.Together>
+    <Transition.In type = 'fade' durationMs={150} />
+    <Transition.Change />
+    <Transition.Out type = 'fade' durationMs={150} />
+  </Transition.Together>
+);
 
 export default function AccordionMenu() {
   const [currentIndex, setCurrentIndex] = React.useState(null);
+  const ref = React.useRef();
   return (
-    <View style={s.container}>
+    <Transitioning.View
+      transition={transition}
+      ref={ref}
+      style={s.container}>
       <StatusBar hidden />
       {data.map(({bg, color, category, subCategories}, index) => {
         return <TouchableOpacity
           activeOpacity={0.9}
           key={category} 
           onPress={()=> {
+            ref.current.animateNextTransition();
             setCurrentIndex(index === currentIndex ? null : index);
           }}
           style={s.cardContainer}>
@@ -46,7 +56,7 @@ export default function AccordionMenu() {
         
       }
       )}
-    </View>
+    </Transitioning.View>
   );
 }
 
@@ -70,9 +80,9 @@ const s = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: -2,
   },
-  // subCategoriesList: {
-  //   flexGrow: 1,
-  // },
+  subCategoriesList: {
+    marginTop: 20,
+  },
   body: {
     fontSize: 20,
     lineHeight: 20 * 1.5,

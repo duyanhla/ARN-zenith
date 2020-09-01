@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import FlatListPicker from './components/FlatListPicker';
-import MovieCarousel from './components/MovieCarousel';
+import { StyleSheet, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
+import FlatListPicker from './components/FlatListPicker';
+import MovieCarousel from './components/MovieCarousel';
+import AccordionMenu from './components/AccordionMenu';
 
 function HomeScreen({ navigation }) {
   return (
@@ -17,6 +18,10 @@ function HomeScreen({ navigation }) {
       <Button
         title="Movie Carousel"
         onPress={() => navigation.navigate('MovieCarousel')}
+      />
+      <Button
+        title="Accordion Menu"
+        onPress={() => navigation.navigate('AccordionMenu')}
       />
     </View>
   );
@@ -47,6 +52,7 @@ export default function App() {
         />
         <Stack.Screen name="FlatListPicker" component={FlatListPicker} header={'FlatListPicker'}/>
         <Stack.Screen name="MovieCarousel" component={MovieCarousel} header={'MovieCarousel'}/>
+        <Stack.Screen name="AccordionMenu" component={AccordionMenu} header={'AccordionMenu'}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

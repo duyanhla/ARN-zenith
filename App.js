@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import FlatListPicker from './components/FlatListPicker';
 import MovieCarousel from './components/MovieCarousel';
 import AccordionMenu from './components/AccordionMenu';
+import AdvancedCarousel from './components/AdvancedCarousel';
 
 function HomeScreen({ navigation }) {
   return (
@@ -22,6 +23,10 @@ function HomeScreen({ navigation }) {
       <Button
         title="Accordion Menu"
         onPress={() => navigation.navigate('AccordionMenu')}
+      />
+      <Button
+        title="Advanced Carousel"
+        onPress={() => navigation.navigate('AdvancedCarousel')}
       />
     </View>
   );
@@ -53,6 +58,7 @@ export default function App() {
         <Stack.Screen name="FlatListPicker" component={FlatListPicker} header={'FlatListPicker'}/>
         <Stack.Screen name="MovieCarousel" component={MovieCarousel} header={'MovieCarousel'}/>
         <Stack.Screen name="AccordionMenu" component={AccordionMenu} header={'AccordionMenu'}/>
+        <Stack.Screen name="AdvancedCarousel" component={AdvancedCarousel} header={'AdvancedCarousel'}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

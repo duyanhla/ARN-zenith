@@ -15,6 +15,7 @@ import {
   SafeAreaView,
   Image,
   Animated,
+  Easing,
 } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
 
